@@ -91,6 +91,8 @@ def retrieve_url(url):
 def isInRoom(user):
     try:
         content = json.loads(retrieve_url(SERVER_URL))
+    except KeyboardInterrupt:
+        raise KeyboardInterrupt
     except:
         warnings.warn("Failed to retrieve data from server.")
         return None
