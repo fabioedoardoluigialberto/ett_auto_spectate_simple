@@ -1,5 +1,7 @@
-# ett_auto_spectate
+# ett_auto_spectate_simple
 A simple tool to follow a user while jumping from one room to another in ETT
+
+*based on https://github.com/jerryfromearth/ett-auto-spectate*
 
 # Introduction
 
