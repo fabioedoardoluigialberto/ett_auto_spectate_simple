@@ -1,3 +1,4 @@
+import warnings
 import requests
 import click
 import pyautogui
@@ -88,7 +89,11 @@ def retrieve_url(url):
 
 
 def isInRoom(user):
-    content = json.loads(retrieve_url(SERVER_URL))
+    try:
+        content = json.loads(retrieve_url(SERVER_URL))
+    except:
+        warnings.warn("Failed to retrieve data from server.")
+        return None
     users = [x for x in content['UsersInRooms'] if x['UserName'] == user]
     if (len(users) > 0):
         sys.stdout.flush()
@@ -115,7 +120,7 @@ def main(user, test):
     while True:
         print(f"Waiting until {user} is in a room...")
         inRoom = False
-        while not inRoom:
+        while not inRoom or inRoom is None:
             inRoom = isInRoom(user)
             print_mouse()
             sleep(INTERVAL)
@@ -123,7 +128,7 @@ def main(user, test):
         print(f"Joining room.")
         joinRoom(test)
 
-        while inRoom:
+        while inRoom or inRoom is None:
             inRoom = isInRoom(user)
             print_mouse()
             sleep(INTERVAL)
