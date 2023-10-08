@@ -11,6 +11,7 @@ To solve this problem, the `ett_auto_spectate` script will listen to the server 
 
 ## Limitations
 - right now it only works on a screen resolution of 1920-1080
+- lost matches open a UI Menu that messes up with the automation, press M in ETT from PC if this happens
 
 # How to use it
 
